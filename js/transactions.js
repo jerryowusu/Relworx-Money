@@ -11,7 +11,7 @@ const services = [
     },
     {
         id: 3,
-        name: 'send',
+        name: 'transfer',
         img: '/images/send.png'
     },
     {
