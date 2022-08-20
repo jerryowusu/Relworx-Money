@@ -5,19 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Withdrawal</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/home.css">
+
 </head>
 <body>
-    <button type="button" class="back" onclick="history.back()">Back</button>
-    <h3 class="name">withdraw</h3>
-    <h2>Enter Amount to withdraw</h2>
-    <p class="transfer">You can withdraw any amount from $1 to $100,000</p>
-    <form action="" method="post">
-        <label for="amount"> Amount:</label>
-        <input type="number" name="amount" id="amount">
-        <br>
-        <label for="amount">Password:</label>
-        <input type="password" name="password" id="password" placeholder="password">
-        <br>
-       <button type="button" class="withdraw-button">Withdraw</button>
+    <div class="withdrawal">
+        <button type="button" class="small-button" onclick="history.back()">Back</button>
+        <h3 class="name">Withdraw</h3>
+        <p class="withdraw-description">You can withdraw any amount from $1 to $100,000</p>
+        <h2>Enter Amount to withdraw</h2>
+        <form action="" method="post">
+            <label for="amount"> Amount:</label>
+            <input type="number" name="amount" id="amount">
+            <br>
+            <label for="amount">Password:</label>
+            <input type="password" name="password" id="password" placeholder="password">
+            <br>
+        <button type="button" class="button">Withdraw</button>
+    </div>
 </body>
 </html>

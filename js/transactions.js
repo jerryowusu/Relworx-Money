@@ -30,7 +30,7 @@ const loadTransactions = () => {
             <a href="/transactions/${service.name}.html" class="transaction-card">
              <div className="name">${service.name}</div>
              <div className="image">
-               <img src="${service.img}" alt="" />
+               <img class="images" src="${service.img}" alt="" />
              </div>
              <br/>
              </a>
