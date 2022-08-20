@@ -1,25 +1,27 @@
+/* eslint-disable class-methods-use-this */
 class Auth {
-   constructor() {
-       document.querySelector("body").style.display = "none";
-       const auth = localStorage.getItem("auth");
-       this.validateAuth(auth);
-   }
-   validateAuth(auth) {
-       if (auth != 1) {
-           window.location.replace("/");
-       } else {
-           document.querySelector("body").style.display = "block";
-       }
-   }
-   
-   logOut() {
-       localStorage.removeItem("auth");
-       window.location.replace("/");
-   }
+  constructor() {
+    document.querySelector('body').style.display = 'none';
+    const auth = localStorage.getItem('auth');
+    this.validateAuth(auth);
+  }
+
+  validateAuth(auth) {
+    if (auth !== 1) {
+      window.location.replace('/');
+    } else {
+      document.querySelector('body').style.display = 'block';
+    }
+  }
+
+  logOut() {
+    localStorage.removeItem('auth');
+    window.location.replace('/');
+  }
 }
 
 const auth = new Auth();
 
-document.querySelector(".logout").addEventListener("click", (e) => {
-    auth.logOut();
+document.querySelector('.logout').addEventListener('click', () => {
+  auth.logOut();
 });
