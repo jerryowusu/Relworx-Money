@@ -1,43 +1,36 @@
-const services = [
-  {
-    id: 1,
-    name: 'wallet',
-    img: '/images/wallet.jpeg',
-  },
-  {
-    id: 2,
-    name: 'withdraw',
-    img: '/images/withdraw.jpeg',
-  },
-  {
-    id: 3,
-    name: 'transfer',
-    img: '/images/send.png',
-  },
-  {
-    id: 4,
-    name: 'transactions',
-    img: '/images/transactions.jpeg',
-  },
-];
+/* eslint-disable no-alert */
+/* eslint-disable consistent-return */
+/* eslint-disable radix */
 
-const transactions = document.querySelector('#transactions');
+export default function transfer(store, sender, amount) {
+  store.forEach((person) => {
+    if (person.email === sender.email) {
+      if (Number(sender.balance) >= Number(amount)) {
+        person.balance = parseInt(person.balance) - parseInt(amount);
+        const current = {
+          ...sender,
+          balance: parseInt(sender.balance) - parseInt(amount),
+        };
+        localStorage.setItem('currentUser', JSON.stringify(current));
+      } else {
+        alert('Transfer successfully made!');
+      }
+    } else {
+      return 'Error, try again later';
+    }
+  });
+  localStorage.setItem('userData', JSON.stringify(store));
+}
 
-const loadTransactions = () => {
-  if (transactions != null) {
-    services.forEach((service) => {
-      const render = `
-            <a href="/transactions/${service.name}.html" class="transaction-card">
-             <div className="name">${service.name}</div>
-             <div className="image">
-               <img class="images" src="${service.img}" alt="" />
-             </div>
-             <br/>
-             </a>
-            `;
-      transactions.innerHTML += `\n ${render}`;
-    });
-  }
-};
+export function updateStore(store, user, amount, form) {
+  store.forEach((person) => {
+    if (person.email === user.email) {
+      person.balance = parseInt(person.balance) + parseInt(amount);
+      alert(form, 'Top-up  was made successfully!');
+    } else {
+      return null;
+    }
+  });
 
-document.addEventListener('DOMContentLoaded', loadTransactions);
+  localStorage.setItem('userData', JSON.stringify(store));
+}

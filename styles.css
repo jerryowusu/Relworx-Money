@@ -111,7 +111,8 @@ input:focus {
   font-size: 1.2em;
 }
 
-.login-title {
+.login-title,
+.register-title {
   font-size: 2.5em;
   color: #007aff;
 }

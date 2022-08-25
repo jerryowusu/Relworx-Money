@@ -1,75 +1,42 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable class-methods-use-this */
-class Login {
-  constructor(form, fields) {
-    this.form = form;
-    this.fields = fields;
-    this.validateOnSubmit();
-  }
+const loginForm = document.querySelector('#login-form');
+const message = document.querySelector('.error-message');
 
-  validateOnSubmit() {
-    const self = this;
-
-    this.form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      let error = 0;
-      self.fields.forEach((field) => {
-        const input = document.querySelector(`#${field}`);
-        if (self.validateFields(input) === false) {
-          error += 1;
-        }
-      });
-      if (error === 0) {
-        localStorage.setItem('auth', 1);
-        this.form.submit();
-      }
-    });
-  }
-
-  validateFields(field) {
-    if (field.value.trim() === '') {
-      this.setStatus(
-        field,
-        `${field.previousElementSibling.innerText} cannot be blank`,
-        'error',
-      );
-      return false;
+const setCurrentUser = (data, userEmail) => {
+  const userData = JSON.parse(localStorage.getItem(data));
+  userData.forEach((user) => {
+    if (user.email === userEmail) {
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      return user;
     }
-    if (field.type === 'password') {
-      if (field.value.length < 8) {
-        this.setStatus(
-          field,
-          `${field.previousElementSibling.innerText} must be at least 8 characters`,
-          'error',
-        );
-        return false;
-      }
-      this.setStatus(field, null, 'success');
-      return true;
-    }
-    this.setStatus(field, null, 'success');
-    return true;
-  }
+    return null;
+  });
+};
 
-  setStatus(field, message, status) {
-    const errorMessage = field.parentElement.querySelector('.error-message');
-
-    if (status === 'success') {
-      if (errorMessage) {
-        errorMessage.innerText = '';
-      }
-      field.classList.remove('input-error');
+const authenticateLogin = (data, userInfo, form) => {
+  const userData = JSON.parse(localStorage.getItem(data));
+  userData.forEach((data) => {
+    if (data.email === userInfo.email && data.password === userInfo.password) {
+      setCurrentUser('userData', userInfo.email);
+      form.reset();
+      window.location.replace('../home.html');
+    } else {
+      message.innerHTML = 'Invalid email or password';
     }
-    if (status === 'error') {
-      errorMessage.innerText = message;
-      field.classList.add('input-error');
-    }
-  }
-}
+  });
+};
 
-const form = document.querySelector('.loginForm');
-if (form) {
-  const fields = ['username', 'password'];
-  const validator = new Login(form, fields);
-}
+const loadInputs = (e) => {
+  e.preventDefault();
+
+  const email = document.querySelector('#login-email').value;
+  const password = document.querySelector('#login-password').value;
+
+  const userInfo = {
+    email,
+    password,
+  };
+
+  authenticateLogin('userData', userInfo, loginForm);
+};
+
+loginForm.addEventListener('submit', loadInputs);

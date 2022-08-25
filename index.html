@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relworx Money</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="/js/login.js"></script>
+    <script defer type='module' src="/js/login.js"></script>
+    <!-- <script defer type='module' src="/js/register.js"></script> -->
+
 </head>
 <body class="login">
     <div class="container">
@@ -16,21 +18,16 @@
     <div class="container">
         <h2 class="text-center login-title">Login</h2>
         <br>
-        <form action="/home.html" class="loginForm">
-            <div class="input-group">
-                <label for="username" class="label">Username</label>
-                <input type="text" id="username" class="input">
-                <span class="error-message"></span>
-            </div>
-            <br>
-            <div class="input-group">
-                <label for="password" class="label">Password</label>
-                <input type="password" id="password" class="input">
-                <span class="error-message"></span>
-            </div>
-            <br>
-            <button class="button" type="submit">Login</button>
+        
+        <form action="" id="login-form" name="login" class="wrapper__form" >
+            <input type="email" name="email" class="input" id="login-email" placeholder="Email address" required>
+            <input type="password" name="password" class="input" id="login-password" placeholder="Password" required>
+            <span class="error-message"></span>
+            <button class="button" id="login-button" type="submit">
+                Login
+            </button>
         </form>
-    </div>
+        <span class="wrapper__span">Don't have account? <a href="./register.html">Register now</a></span>
+    </div>    
 </body>
 </html>
