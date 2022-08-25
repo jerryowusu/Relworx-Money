@@ -34,3 +34,10 @@ export function updateStore(store, user, amount, form) {
 
   localStorage.setItem('userData', JSON.stringify(store));
 }
+
+const CurrentUser = JSON.parse(localStorage.getItem('currentUser'));
+const UserData = JSON.parse(localStorage.getItem('userData'));
+
+console.log(CurrentUser);
+
+console.log(UserData);

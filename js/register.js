@@ -25,7 +25,7 @@ const saveInputs = (e) => {
     email,
     password,
     admin,
-    balance: 0,
+    balance: 1000,
   };
 
   saveDataToLocalStorage('userData', userInfo);

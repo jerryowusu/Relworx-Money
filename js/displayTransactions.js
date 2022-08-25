@@ -16,7 +16,7 @@ const services = [
   },
   {
     id: 4,
-    name: 'transactions',
+    name: 'transaction',
     img: '/images/transactions.jpeg',
   },
 ];
@@ -27,10 +27,10 @@ const loadTransactions = () => {
   if (transactions != null) {
     services.forEach((service) => {
       const render = `
-            <a href="/transactions/${service.name}.html" class="transaction-card">
+            <a href="/transactions/${service.name}.html"  class="transaction-card">
              <div className="name">${service.name}</div>
              <div className="image">
-               <img class="images" src="${service.img}" alt="" />
+               <img class="images" src="${service.img}" alt="${service.name}" />
              </div>
              <br/>
              </a>
@@ -41,10 +41,3 @@ const loadTransactions = () => {
 };
 
 document.addEventListener('DOMContentLoaded', loadTransactions);
-
-const CurrentUser = JSON.parse(localStorage.getItem('currentUser'));
-const UserData = JSON.parse(localStorage.getItem('userData'));
-
-console.log(CurrentUser);
-
-console.log(UserData);
