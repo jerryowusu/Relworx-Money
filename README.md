@@ -1,7 +1,5 @@
 # Relworx-Money
 
-# Web Summit 2022 Accra
-
 This is a take home assignment for Relworx Money. Users can send and receive money as well as check their balance. Admin can upload money to each user. It was made with HTML, CSS and JavaScript.
 
 Live preview [here](https://jocular-pixie-e55b3c.netlify.app). 
